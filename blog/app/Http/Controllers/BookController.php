@@ -8,7 +8,12 @@ use Illuminate\Support\Facades\Auth;
 
 class BookController extends Controller
 {
-    public function uploadBook(Request $request) 
+	public function index()
+	{
+		return view('home');
+	}
+	
+	public function uploadBook(Request $request) 
     {
     	if (isset(Auth::user()->id)) {
     		$user_id = Auth::user()->id;
@@ -46,8 +51,31 @@ class BookController extends Controller
     	return back()->with('success', 'The book is uploaded!');	
 	}
 	
-	public function index()
+	public function showMyBooks()
 	{
-		return view('home');
+		if (isset(Auth::user()->id)) {
+    		$user_id = Auth::user()->id;
+    	} else {
+    		return redirect()->route('login');
+    	}
+
+    	$myBooks = Book::getMyBooks($user_id);
+    	
+    	return view('home', compact('myBooks'));
+	}
+	
+	public function showAllBooks()
+	{
+		$allBooks = Book::getAllBooks();
+		 
+		return view('home', compact('allBooks'));
+	}
+	
+	public function searchBook()
+	{
+		$books = Book::searchBook();
+		
+		return view('home', compact('books'));		
+		
 	}
 }

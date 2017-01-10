@@ -9,4 +9,20 @@
 	@endif
 
 	@include('partials._body')
+	
+	@if(isset($myBooks))
+		@include('partials._displayMyBooks')
+		{!! $myBooks->links() !!}
+	@endif
+	
+	@if(isset($allBooks))
+		@include('partials._displayAllBooks')
+		{!! $allBooks->links() !!}
+	@endif
+	
+	@if(isset($books))
+		@include('partials._searchBook')
+		{!! $$books->links() !!}
+	@endif
+	
 @endsection

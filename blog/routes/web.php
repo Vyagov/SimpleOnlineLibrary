@@ -22,3 +22,9 @@ Route::get('/home', 'HomeController@index');
 Route::get('insertInfo', 'BookController@index');
 
 Route::post('insertInfo', 'BookController@uploadBook');
+
+Route::get('myBooks', 'BookController@showMyBooks');
+
+Route::get('allBooks', 'BookController@showAllBooks');
+
+Route::post('searchBook', 'BookController@searchBook');

@@ -85,3 +85,24 @@ input[type=date] {
 	font-size: 1.5em;
 	color: #006699;
 }
+
+.thumbnail {
+	margin: 0;
+	background: #eee;
+	box-sizing: border-box;
+	height: 320px;
+}
+
+.imglink img {
+    border: medium none;
+    display: inline-block;
+    max-height: 170px;
+    max-width: 130px;
+    vertical-align: middle;
+    width: 100%;
+}
+
+.div-img {
+    font-size: 1.3em;
+   	text-align: center;
+}

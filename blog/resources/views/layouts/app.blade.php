@@ -22,6 +22,40 @@
 		div.dropdown {
 			display: inline-block;
 		}
+		.dropdown-menu1 {
+		    position: absolute;
+		    top: 100%;
+		    left: 0;
+		    z-index: 1000;
+		    display: none;
+		    padding: 3px 0;
+		    list-style: none;
+		    background-clip: padding-box;
+		}
+		.open>.dropdown-menu1 {
+		    display: block;
+		}
+		
+		.title {
+			margin-top: 5px;
+			font-weight: bold;
+			color: #009966;	
+			line-height: 1.3em;	
+		}
+		
+		.author {
+			font-weight: bold;
+			line-height: 1.3em;
+			color: #006699;
+			font-style: italic;
+		}
+		
+		.genre {
+			font-size: 0.8em; 
+			font-weight: bold;
+		}
+
+		
 	</style>
     <!-- Scripts -->
     <script>
@@ -49,7 +83,7 @@
 	                        <!-- Authentication Links -->
 	                        
 	                        @if (Auth::guest())
-	                        	<a href="#" class="btn btn-large btn-primary">
+	                        	<a href="{{ url('allBooks') }}" class="btn btn-large btn-primary">
 		                			<i class="fa fa-book" aria-hidden="true"></i>
 		                			All books
 			                	</a>
@@ -63,16 +97,23 @@
 		                		</a>
 	                        @else
 	                        	<div class="dropdown">
-	                        		<a class="btn btn-large btn-primary dropdown-toggle" role="button" data-toggle="dropdown">
-				               			<i class="fa fa-book" aria-hidden="true"></i>
-				               			All books
-				               			<span class="caret"></span>
-				               		</a>	
-				               		<a href="#" class="btn btn-large btn-primary dropdown-menu">
-			                			&nbsp;&nbsp;
-			                			<i class="fa fa-book" aria-hidden="true"></i>
-			                			My books
-				                	</a>
+	                        		<button class="btn btn-large btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+  										<i class="fa fa-book" aria-hidden="true"></i>
+				               			Books
+  										<span class="caret"></span>
+  									</button>
+  									<ul class="dropdown-menu1">
+									    <li>
+									    	<a href="{{ url('myBooks') }}" class="btn btn-large btn-primary">
+			                					My books
+			                				</a>
+			                			</li>
+									    <li>
+									    	<a href="{{ url('allBooks') }}" class="btn btn-large btn-primary">
+					                			All books
+						                	</a>
+									    </li>
+  									</ul>
 				                </div>
 				                <div class="dropdown right">
 	                                <a class="btn btn-large btn-primary dropdown-toggle" role="button" data-toggle="dropdown">
@@ -96,6 +137,7 @@
                 	</div>
                 	
                 	@yield('content')
+                	
            		</div>
 			</div>
 		</div>

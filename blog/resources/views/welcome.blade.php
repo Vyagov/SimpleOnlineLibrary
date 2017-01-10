@@ -28,7 +28,7 @@
 		                		Wapi Bulgaria Library
 		                	</div>
 		                	<div class="col-md-6 text">
-		                		<a href="#" class="btn btn-large btn-primary">
+		                		<a href="{{ url('allBooks') }}" class="btn btn-large btn-primary">
 		                			<i class="fa fa-book" aria-hidden="true"></i>
 		                			All books
 		                		</a>
@@ -46,6 +46,11 @@
 		                </div>
 		                
 		                @include('partials._body')
+		                
+		                @if(isset($allBooks))
+							@include('partials._displayAllBooks')
+							{!! $allBooks->links() !!}
+						@endif
 		                
 		            </div>
 		        </div>

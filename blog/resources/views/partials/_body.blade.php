@@ -104,3 +104,13 @@
 		            	</div>
                     </form>
 	            </div>
+	            <div style="border: 2px solid grey"></div>
+	            <div class="row panel-body">
+					<form class="navbar-form navbar-right" role="search" method="POST" action="{{ url('searchBook') }}" >
+				     	{{ csrf_field() }}
+				 		<div class="form-group">
+				 			<input type="text" class="form-control" name="searchBook" placeholder="Search book" value="{{ isset($query) ? $query : '' }}">
+						</div> 
+				 		<button type="submit" style="margin-right: 20px" class="btn btn-large btn-primary">Search</button>   
+				   	</form>
+				</div>
