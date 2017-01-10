@@ -1,19 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-
-	@if(count($errors))
-		<ul>
-			@foreach($errors->all() as $error)
-				<li>{{ $error }}</li>
-			@endforeach
-		</ul>
-	@endif
 	
 	@if($message = Session::get('success'))
-		<p>{{ $message }}</p>
-		<img src="images/{{ Session::get('path_to_image') }}" />
-	
+		<div class="alert alert-success">
+			<strong>Success!</strong> {{ $message }}
+		</div>
 	@endif
 
 	@include('partials._body')

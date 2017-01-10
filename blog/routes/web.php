@@ -19,6 +19,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('imageUpload', 'ImageController@index');
+Route::get('insertInfo', 'BookController@index');
 
-Route::post('imageUpload', 'ImageController@upload');
+Route::post('insertInfo', 'BookController@uploadBook');

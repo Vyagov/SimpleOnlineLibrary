@@ -14,7 +14,15 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('node_modules/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
-
+	<style>
+		a.dropdown-toggle {
+			width: 160px;
+		}
+		
+		div.dropdown {
+			display: inline-block;
+		}
+	</style>
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
@@ -34,17 +42,17 @@
 	                		<img src="{{ asset('images/logo-wapi.png') }}" alt="Logo" />
 		                </div>
 		               	<div class="col-md-4 text">
-		               		<a class="a-decor" href="{{ url('/') }}">
-	                        	{{ config('app.name', 'Wapi Bulgaria Library') }}
-	                    	</a>
+	                        {{ config('app.name', 'Wapi Bulgaria Library') }}
 		               	</div>
 		               	<div class="col-md-6 text">
-		               		<a href="#" class="btn btn-large btn-primary">
-	                			<i class="fa fa-book" aria-hidden="true"></i>
-	                			All books
-		                	</a>
+			                
 	                        <!-- Authentication Links -->
+	                        
 	                        @if (Auth::guest())
+	                        	<a href="#" class="btn btn-large btn-primary">
+		                			<i class="fa fa-book" aria-hidden="true"></i>
+		                			All books
+			                	</a>
 		                		<a href="{{ url('/login') }}" class="btn btn-large btn-primary ">
 									<i class="fa fa-sign-in" aria-hidden="true"></i>
 		                			Login
@@ -54,24 +62,34 @@
 		                			Register
 		                		</a>
 	                        @else
-	                            <div class="dropdown">
-	                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-	                                    {{ Auth::user()->name }} <span class="caret"></span>
+	                        	<div class="dropdown">
+	                        		<a class="btn btn-large btn-primary dropdown-toggle" role="button" data-toggle="dropdown">
+				               			<i class="fa fa-book" aria-hidden="true"></i>
+				               			All books
+				               			<span class="caret"></span>
+				               		</a>	
+				               		<a href="#" class="btn btn-large btn-primary dropdown-menu">
+			                			&nbsp;&nbsp;
+			                			<i class="fa fa-book" aria-hidden="true"></i>
+			                			My books
+				                	</a>
+				                </div>
+				                <div class="dropdown right">
+	                                <a class="btn btn-large btn-primary dropdown-toggle" role="button" data-toggle="dropdown">
+	                                    {{ Auth::user()->name }} 
+	                                    <span class="caret"></span>
 	                                </a>
 	
-	                                <ul class="dropdown-menu" role="menu">
-	                                    <li>
-	                                        <a href="{{ url('/logout') }}"
-	                                            onclick="event.preventDefault();
-	                                                     document.getElementById('logout-form').submit();">
-	                                            Logout
-	                                        </a>
-	
-	                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-	                                            {{ csrf_field() }}
-	                                        </form>
-	                                    </li>
-	                                </ul>
+	                                <a href="{{ url('/logout') }}" class="btn btn-large btn-primary dropdown-menu"
+                                    	onclick="event.preventDefault();
+                                        	document.getElementById('logout-form').submit();">
+                                        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        Logout
+                                    </a>
+
+                                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                    	{{ csrf_field() }}
+                                    </form>
 	                            </div>
 	                        @endif
                     	</div>
